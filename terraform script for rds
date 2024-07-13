@@ -1,0 +1,19 @@
+#terraform script for rds
+provider "aws" {
+  region = "ap-south-1"
+}
+resource "aws_db_instance" "mydb" {
+  allocated_storage    = 20
+  db_name              = "mydb"
+  engine               = "mysql"
+  engine_version       = "8.0.35"
+  instance_class       = "db.t3.micro"
+  username             = "admin"
+  password             = "Tabib123"
+  parameter_group_name = "default.mysql8.0"
+  skip_final_snapshot  = true
+  publicly_accessible    = true
+  vpc_security_group_ids  = ["sg-005299de2102dd63d"]
+  availability_zone = "ap-south-1b"
+  identifier = "demo"
+}
